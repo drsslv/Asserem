@@ -1,0 +1,57 @@
+﻿
+@using WebApplication3.Models
+@model WebApplication3.Models.Sale
+
+@{
+
+    var id = Model.Id;
+    ViewBag.Title = "Edit";
+
+}
+
+<td colspan="5" style="width: 100%;">
+    @using (Html.BeginForm())
+    {
+        <table style="border-spacing: 50px;">
+            <tr>
+                <td style=" width: 80px;">
+                    @Html.EditorFor(m => Model.Name)
+                </td>
+                <td style="width: auto">
+                    @Html.DropDownList("AgentId", null, new { @class = "form-control", @width = "100px" })
+                </td>
+
+                <td style="width: auto">
+                    @Html.DropDownList("PersonId", null, new { @class = "form-control" })
+                </td>
+                <td style="width:300px;">
+                    <input type="submit" value="сохранить" class="form-control" />
+                </td>
+            </tr>
+        </table>
+
+   
+
+
+    }
+</td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

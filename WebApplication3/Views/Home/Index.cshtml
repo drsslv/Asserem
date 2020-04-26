@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplication3.Models.Sale>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "../Shared/_Layout.cshtml";
+
+}
+
+<h2>Продажи</h2>
+
+<p>
+    @Html.ActionLink("Добавить продажу", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Продажа")
+
+        </th>
+        <th>
+            @Html.Label("Клиент-организация")
+
+        </th>
+        <th>
+            @Html.Label("Контактное лицо-Ответственный за продажу")
+        </th>
+        <th>
+            @Html.Label("Город клиента-организации")
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        var ide = item.Id;
+
+        <tr id="@ide" >
+            <td >
+                @Html.DisplayFor(modelItem => item.Name)
+
+            </td>
+            <td >
+                @Html.DisplayFor(modelItem => item.Agent.Name)
+
+            </td>
+            <td >
+                @Html.DisplayFor(modelItem => item.Person.Name)
+            </td>
+            <td >
+                @Html.DisplayFor(modelItem => item.Agent.City.Name)
+            </td>
+            <td >
+                @Ajax.ActionLink("Изменить", "Edit", new { id = item.Id }, new AjaxOptions
+                {
+                    UpdateTargetId = ide.ToString(),
+                    InsertionMode = InsertionMode.Replace
+
+                }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }) |
+                @Html.ActionLink("Скопировать", "Copy", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
